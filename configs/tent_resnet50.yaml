@@ -1,0 +1,55 @@
+# Step 5B — Tent-style entropy-minimization adaptation (offline, unsupervised; NOT strict online TTA).
+#   python -m src.tasks.icassp2027.adapt_tent --config configs/tent_resnet50.yaml --seed 0 --variant natural --passes 1
+#
+# Scope (exact): classifier head FROZEN; all conv/backbone weights FROZEN; ONLY BatchNorm affine gamma/beta are trainable.
+# Objective: L = mean_x [ -sum_c p(c|x) log p(c|x) ]  (softmax entropy), no labels, no pseudo-labels, no balancing, no prototypes.
+# BN running statistics: during adaptation every BatchNorm normalizes the current batch with its own statistics (Tent
+#   standard) while running mean/var are RESET and re-estimated cumulatively (momentum=None) over the stream — identical
+#   to Step 5A; evaluation uses eval mode with those re-estimated statistics (no test-batch statistics at evaluation).
+# Each run starts from the SOURCE-ONLY checkpoint (never from a target-statistics checkpoint).
+
+protocol: configs/splits.yaml            # icassp2027_spad_electronics_v1
+experiment: tent_resnet50
+method: tent_entropy_minimization_bn_affine
+output_root: experiments/tent            # experiments/tent/seed<k>/<variant>/pass<p>/
+
+source_checkpoints:
+  0: experiments/source_only/seed0/best_model.pt
+  1: experiments/source_only/seed1/best_model.pt
+  2: experiments/source_only/seed2/best_model.pt
+
+adaptation:
+  variants:
+    natural:  {export: data_exports/spad_electronics_hf/dynamic_adaptation_natural.parquet,  manifest: configs/manifests/dynamic_adaptation_natural.tsv,  role: primary}
+    balanced: {export: data_exports/spad_electronics_hf/dynamic_adaptation_balanced.parquet, manifest: configs/manifests/dynamic_adaptation_balanced.tsv, role: secondary (construction-time label-aware)}
+  n_target: 19200
+  batch_size: 32
+  passes_primary: 1
+  passes_secondary: [5, 10]              # pre-specified; never chosen on target-test labels
+  stream: fixed stream_position order from the manifest; one pass = one complete traversal; no future batches
+  update_scope: bn_affine_only           # gamma/beta of every BatchNorm2d (53 layers)
+  frozen: [all_conv_weights, classifier_head]
+  bn_running_stats: reset + cumulative re-estimation during adaptation (momentum=None); eval mode at evaluation
+  eval_bn_mode: running_stats            # no test-batch statistics at evaluation
+  loss: softmax_entropy_mean
+  optimizer: sgd
+  lr: 0.001                              # approved initial value; no alternatives without approval
+  momentum: 0.9
+  nesterov: true
+  weight_decay: 0.0
+  scheduler: none
+  amp: bf16                              # forward under autocast; entropy computed in float32
+  nan_guard: abort                       # abort the run on NaN/Inf loss or parameters
+  label_access: none (adaptation export carries no class_label/class_folder_id/source_path/frame_index)
+
+eval:
+  split: dynamic_test                    # post hoc only
+  batch_size: 128
+
+wandb:
+  enabled: true
+  entity: erictsai1224tw
+  project: spad-icassp2027
+  group: icassp2027/step5b/tent
+  tags: [icassp2027, step5b, tent, bn_affine_only, entropy_min, post_hoc_evaluation]
+  mode: online

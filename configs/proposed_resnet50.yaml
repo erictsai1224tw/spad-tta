@@ -1,0 +1,64 @@
+# Step 5C — proposed method: entropy minimization + augmentation consistency on BN affine parameters only.
+#   python -m src.tasks.icassp2027.adapt_proposed --config configs/proposed_resnet50.yaml --seed 0 --variant natural --passes 1
+#   ablations: --lambda-ent 0 --lambda-cons 1 (consistency-only); entropy-only == Step 5B (see reports/step5_protocol_freeze.md P4)
+#
+# Approved (task brief): BN gamma/beta only; head + conv frozen; SGD lr 1e-3, momentum 0.9, Nesterov, wd 0, no scheduler;
+#   weak = identity; strong = Gaussian noise sigma 0.05 in [0,1] image space;
+#   L_entropy = H(p_w); L_consistency = KL(stopgrad(p_w) || p_s); L_TTA = L_entropy + 1.0 * L_consistency.
+# PROPOSED (reports/step5_protocol_freeze.md §C, approval required before formal runs): P1 strong-view BN handling
+#   (running stats from clean view only), P2 noise mechanics (de-normalize, noise on 1 channel replicated, clamp [0,1],
+#   re-normalize, seeded generator), P3 gradient path, P5 consistency-only scope, P7 bf16 forward.
+
+protocol: configs/splits.yaml
+experiment: proposed_resnet50
+method: proposed_entropy_consistency_bn_affine
+output_root: experiments/proposed        # experiments/proposed/<ablation>/seed<k>/<variant>/pass<p>/  (ablation: proposed | consistency_only)
+
+source_checkpoints:
+  0: experiments/source_only/seed0/best_model.pt
+  1: experiments/source_only/seed1/best_model.pt
+  2: experiments/source_only/seed2/best_model.pt
+
+adaptation:
+  variants:
+    natural:  {export: data_exports/spad_electronics_hf/dynamic_adaptation_natural.parquet,  manifest: configs/manifests/dynamic_adaptation_natural.tsv,  role: primary}
+    balanced: {export: data_exports/spad_electronics_hf/dynamic_adaptation_balanced.parquet, manifest: configs/manifests/dynamic_adaptation_balanced.tsv, role: secondary (construction-time label-aware)}
+  n_target: 19200
+  batch_size: 32
+  passes_primary: 1
+  passes_secondary: [5, 10]
+  stream: fixed stream_position order; one pass = one complete traversal; no future batches
+  update_scope: bn_affine_only
+  frozen: [all_conv_weights, classifier_head]
+  bn_running_stats: reset + cumulative re-estimation from the WEAK (identity) view only (momentum=None); strong view normalized with its own batch statistics with track_running_stats switched off for that forward (no buffer writes) (P1); eval mode at evaluation
+  eval_bn_mode: running_stats
+  weak_augmentation: identity
+  strong_augmentation: gaussian_noise
+  noise_sigma: 0.05                      # in [0,1] image space
+  noise_space: "[0,1] image space: x01 = x*std+mean -> + N(0, sigma^2) (one channel, replicated to 3) -> clamp [0,1] -> re-normalize (P2)"
+  loss:
+    entropy: H(p_w)                      # softmax entropy of the weak view, float32
+    consistency: KL(stopgrad(p_w) || p_s)
+    lambda_ent: 1.0
+    lambda_cons: 1.0
+  optimizer: sgd
+  lr: 0.001
+  momentum: 0.9
+  nesterov: true
+  weight_decay: 0.0
+  scheduler: none
+  amp: bf16
+  nan_guard: abort
+  label_access: none (adaptation export carries no class_label/class_folder_id/source_path/frame_index)
+
+eval:
+  split: dynamic_test
+  batch_size: 128
+
+wandb:
+  enabled: true
+  entity: erictsai1224tw
+  project: spad-icassp2027
+  group: icassp2027/step5c/proposed
+  tags: [icassp2027, step5c, proposed, entropy_consistency, bn_affine_only, post_hoc_evaluation]
+  mode: online

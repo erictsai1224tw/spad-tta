@@ -1,0 +1,6 @@
+# LODO pilot fold: leave out direction 5 (train on the other four static directions). Inherits configs/lodo_direction/base.yaml.
+#   python -m src.tasks.icassp2027.train_lodo_direction --config configs/lodo_direction/leave_out_5.yaml
+base: configs/lodo_direction/base.yaml
+leave_out_direction: 5
+train_directions: [1, 2, 3, 4]
+test_directions: [1, 2, 3, 4, 5]

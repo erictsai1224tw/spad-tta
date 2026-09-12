@@ -1,0 +1,1854 @@
+protocol_name: icassp2027_spad_electronics_v1
+generated_by: scripts/build_icassp_splits.py
+dataset_root: data/SPAD_Electronics
+primary_scope:
+  static: data/SPAD_Electronics/0_HZ/<class>/direction_<k>/photoN.png
+  dynamic: data/SPAD_Electronics/100_HZ/<class>/photoN.png
+  counts:
+    static: 15424
+    dynamic_classes: 30427
+    primary_total: 45851
+excluded:
+- path: data/SPAD_Electronics/100_HZ/mix
+  count: 26686
+  manifest: configs/manifests/excluded_mix.tsv
+  reason: no verified per-frame labels; group names are not verified class-id ranges
+- path: data/SPAD_Electronics_32_32
+  reason: 32x32 sibling reserved for a future separate resolution experiment; never part of a primary split
+full_on_disk_png_count: 72537
+resolution:
+  native_sensor_resolution: 32x32
+  stored_processed_resolution: 640x640
+  statement: The 640x640 PNGs are processed/stored representations of native 32x32 measurements; according to the
+    project data-generation convention the native measurements are linearly upsampled to 640x640. The 32->640 step
+    is not implemented or documented in this repository.
+input_policy:
+  source: stored 640x640 PNG, PIL mode L
+  resize:
+    to:
+    - 224
+    - 224
+    interpolation: bilinear
+    antialias: true
+  channels: L -> [L, L, L] (replicate grayscale to 3 channels)
+  normalization: ImageNet mean/std applied identically to the 3 replicated channels
+  applies_to: every method and baseline
+labels:
+  provenance: directory-level only (folder id N <-> class_NN <-> conf/dataset/electronics.yaml class_names[N-1]);
+    no per-image metadata file exists
+  class_names:
+  - inductor
+  - resistor
+  - LED
+  - film_capacitor
+  - tactile_switch
+  - oscillator
+  - 4pin_right_angle_male
+  - 5pin_female_housing
+  - USB_TypeC_receptacle
+  - humidity_sensor_module
+  - 3_pin_right_angle_male_header
+  - straight_male_header
+  - vibration_switch
+  - shock_sensor
+  - electrolytic_capacitor
+  - slotted_optical_switch_A
+  - slotted_optical_switch_B
+  - photointerrupter
+  - photodiode
+  - passive_buzzer
+  instance_pairing: none; static and dynamic correspond at class level only
+seeds:
+  split_seed: 20260822
+  natural_selection_seed: 20260822
+  balanced_selection_seed: 20260822 + class_id
+  stream_order_seed_natural: 20261822
+  stream_order_seed_balanced: 20262822
+  sample_id_seed: 20263822
+  model_adaptation_seeds:
+  - 0
+  - 1
+  - 2
+  note: split manifests are identical for every model/adaptation seed
+static_split:
+  unit: (class, direction) group; never spans splits
+  rule:
+    static_train:
+    - 1
+    - 2
+    - 3
+    static_validation:
+    - 4
+    static_test:
+    - 5
+  counts_per_class:
+    1:
+      direction_1: 211
+      direction_2: 117
+      direction_3: 124
+      direction_4: 112
+      direction_5: 122
+      static_train: 452
+      static_validation: 112
+      static_test: 122
+    2:
+      direction_1: 176
+      direction_2: 144
+      direction_3: 135
+      direction_4: 231
+      direction_5: 124
+      static_train: 455
+      static_validation: 231
+      static_test: 124
+    3:
+      direction_1: 175
+      direction_2: 149
+      direction_3: 160
+      direction_4: 144
+      direction_5: 151
+      static_train: 484
+      static_validation: 144
+      static_test: 151
+    4:
+      direction_1: 214
+      direction_2: 144
+      direction_3: 188
+      direction_4: 123
+      direction_5: 170
+      static_train: 546
+      static_validation: 123
+      static_test: 170
+    5:
+      direction_1: 144
+      direction_2: 192
+      direction_3: 147
+      direction_4: 126
+      direction_5: 147
+      static_train: 483
+      static_validation: 126
+      static_test: 147
+    6:
+      direction_1: 272
+      direction_2: 138
+      direction_3: 144
+      direction_4: 128
+      direction_5: 137
+      static_train: 554
+      static_validation: 128
+      static_test: 137
+    7:
+      direction_1: 172
+      direction_2: 172
+      direction_3: 139
+      direction_4: 170
+      direction_5: 138
+      static_train: 483
+      static_validation: 170
+      static_test: 138
+    8:
+      direction_1: 286
+      direction_2: 144
+      direction_3: 131
+      direction_4: 128
+      direction_5: 144
+      static_train: 561
+      static_validation: 128
+      static_test: 144
+    9:
+      direction_1: 283
+      direction_2: 122
+      direction_3: 128
+      direction_4: 140
+      direction_5: 132
+      static_train: 533
+      static_validation: 140
+      static_test: 132
+    10:
+      direction_1: 135
+      direction_2: 127
+      direction_3: 128
+      direction_4: 125
+      direction_5: 161
+      static_train: 390
+      static_validation: 125
+      static_test: 161
+    11:
+      direction_1: 132
+      direction_2: 138
+      direction_3: 134
+      direction_4: 128
+      direction_5: 143
+      static_train: 404
+      static_validation: 128
+      static_test: 143
+    12:
+      direction_1: 128
+      direction_2: 128
+      direction_3: 128
+      direction_4: 153
+      direction_5: 126
+      static_train: 384
+      static_validation: 153
+      static_test: 126
+    13:
+      direction_1: 217
+      direction_2: 166
+      direction_3: 208
+      direction_4: 126
+      direction_5: 124
+      static_train: 591
+      static_validation: 126
+      static_test: 124
+    14:
+      direction_1: 128
+      direction_2: 128
+      direction_3: 137
+      direction_4: 122
+      direction_5: 320
+      static_train: 393
+      static_validation: 122
+      static_test: 320
+    15:
+      direction_1: 225
+      direction_2: 135
+      direction_3: 131
+      direction_4: 142
+      direction_5: 131
+      static_train: 491
+      static_validation: 142
+      static_test: 131
+    16:
+      direction_1: 122
+      direction_2: 133
+      direction_3: 137
+      direction_4: 124
+      direction_5: 132
+      static_train: 392
+      static_validation: 124
+      static_test: 132
+    17:
+      direction_1: 132
+      direction_2: 124
+      direction_3: 549
+      direction_4: 128
+      direction_5: 138
+      static_train: 805
+      static_validation: 128
+      static_test: 138
+    18:
+      direction_1: 159
+      direction_2: 160
+      direction_3: 240
+      direction_4: 159
+      direction_5: 136
+      static_train: 559
+      static_validation: 159
+      static_test: 136
+    19:
+      direction_1: 128
+      direction_2: 137
+      direction_3: 132
+      direction_4: 128
+      direction_5: 128
+      static_train: 397
+      static_validation: 128
+      static_test: 128
+    20:
+      direction_1: 128
+      direction_2: 123
+      direction_3: 125
+      direction_4: 128
+      direction_5: 122
+      static_train: 376
+      static_validation: 128
+      static_test: 122
+  totals:
+    static_train: 9733
+    static_validation: 2765
+    static_test: 2926
+dynamic_split:
+  unit: contiguous block of filename indices; never spans adaptation/test
+  ordering: numeric N of photoN.png; filename-index contiguity only -- the repository does not prove that N is the
+    acquisition order
+  blocks_per_class: 10
+  block_method: numpy.array_split
+  adaptation_pool_blocks:
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  test_blocks:
+  - 8
+  - 9
+  dynamic_validation: none (v1)
+  blocks:
+    1:
+    - block_id: 0
+      n: 140
+      first_file: photo0.png
+      last_file: photo139.png
+      first_index: 0
+      last_index: 139
+      role: adaptation_pool
+    - block_id: 1
+      n: 140
+      first_file: photo140.png
+      last_file: photo279.png
+      first_index: 140
+      last_index: 279
+      role: adaptation_pool
+    - block_id: 2
+      n: 140
+      first_file: photo280.png
+      last_file: photo419.png
+      first_index: 280
+      last_index: 419
+      role: adaptation_pool
+    - block_id: 3
+      n: 140
+      first_file: photo420.png
+      last_file: photo559.png
+      first_index: 420
+      last_index: 559
+      role: adaptation_pool
+    - block_id: 4
+      n: 140
+      first_file: photo560.png
+      last_file: photo699.png
+      first_index: 560
+      last_index: 699
+      role: adaptation_pool
+    - block_id: 5
+      n: 140
+      first_file: photo700.png
+      last_file: photo839.png
+      first_index: 700
+      last_index: 839
+      role: adaptation_pool
+    - block_id: 6
+      n: 139
+      first_file: photo840.png
+      last_file: photo978.png
+      first_index: 840
+      last_index: 978
+      role: adaptation_pool
+    - block_id: 7
+      n: 139
+      first_file: photo979.png
+      last_file: photo1117.png
+      first_index: 979
+      last_index: 1117
+      role: adaptation_pool
+    - block_id: 8
+      n: 139
+      first_file: photo1118.png
+      last_file: photo1256.png
+      first_index: 1118
+      last_index: 1256
+      role: dynamic_test
+    - block_id: 9
+      n: 139
+      first_file: photo1257.png
+      last_file: photo1395.png
+      first_index: 1257
+      last_index: 1395
+      role: dynamic_test
+    2:
+    - block_id: 0
+      n: 128
+      first_file: photo0.png
+      last_file: photo127.png
+      first_index: 0
+      last_index: 127
+      role: adaptation_pool
+    - block_id: 1
+      n: 128
+      first_file: photo128.png
+      last_file: photo255.png
+      first_index: 128
+      last_index: 255
+      role: adaptation_pool
+    - block_id: 2
+      n: 128
+      first_file: photo256.png
+      last_file: photo383.png
+      first_index: 256
+      last_index: 383
+      role: adaptation_pool
+    - block_id: 3
+      n: 128
+      first_file: photo384.png
+      last_file: photo511.png
+      first_index: 384
+      last_index: 511
+      role: adaptation_pool
+    - block_id: 4
+      n: 128
+      first_file: photo512.png
+      last_file: photo639.png
+      first_index: 512
+      last_index: 639
+      role: adaptation_pool
+    - block_id: 5
+      n: 128
+      first_file: photo640.png
+      last_file: photo767.png
+      first_index: 640
+      last_index: 767
+      role: adaptation_pool
+    - block_id: 6
+      n: 128
+      first_file: photo768.png
+      last_file: photo895.png
+      first_index: 768
+      last_index: 895
+      role: adaptation_pool
+    - block_id: 7
+      n: 128
+      first_file: photo896.png
+      last_file: photo1023.png
+      first_index: 896
+      last_index: 1023
+      role: adaptation_pool
+    - block_id: 8
+      n: 128
+      first_file: photo1024.png
+      last_file: photo1151.png
+      first_index: 1024
+      last_index: 1151
+      role: dynamic_test
+    - block_id: 9
+      n: 127
+      first_file: photo1152.png
+      last_file: photo1278.png
+      first_index: 1152
+      last_index: 1278
+      role: dynamic_test
+    3:
+    - block_id: 0
+      n: 124
+      first_file: photo0.png
+      last_file: photo123.png
+      first_index: 0
+      last_index: 123
+      role: adaptation_pool
+    - block_id: 1
+      n: 124
+      first_file: photo124.png
+      last_file: photo247.png
+      first_index: 124
+      last_index: 247
+      role: adaptation_pool
+    - block_id: 2
+      n: 123
+      first_file: photo248.png
+      last_file: photo370.png
+      first_index: 248
+      last_index: 370
+      role: adaptation_pool
+    - block_id: 3
+      n: 123
+      first_file: photo371.png
+      last_file: photo493.png
+      first_index: 371
+      last_index: 493
+      role: adaptation_pool
+    - block_id: 4
+      n: 123
+      first_file: photo494.png
+      last_file: photo616.png
+      first_index: 494
+      last_index: 616
+      role: adaptation_pool
+    - block_id: 5
+      n: 123
+      first_file: photo617.png
+      last_file: photo739.png
+      first_index: 617
+      last_index: 739
+      role: adaptation_pool
+    - block_id: 6
+      n: 123
+      first_file: photo740.png
+      last_file: photo862.png
+      first_index: 740
+      last_index: 862
+      role: adaptation_pool
+    - block_id: 7
+      n: 123
+      first_file: photo863.png
+      last_file: photo985.png
+      first_index: 863
+      last_index: 985
+      role: adaptation_pool
+    - block_id: 8
+      n: 123
+      first_file: photo986.png
+      last_file: photo1108.png
+      first_index: 986
+      last_index: 1108
+      role: dynamic_test
+    - block_id: 9
+      n: 123
+      first_file: photo1109.png
+      last_file: photo1231.png
+      first_index: 1109
+      last_index: 1231
+      role: dynamic_test
+    4:
+    - block_id: 0
+      n: 125
+      first_file: photo0.png
+      last_file: photo124.png
+      first_index: 0
+      last_index: 124
+      role: adaptation_pool
+    - block_id: 1
+      n: 125
+      first_file: photo125.png
+      last_file: photo249.png
+      first_index: 125
+      last_index: 249
+      role: adaptation_pool
+    - block_id: 2
+      n: 125
+      first_file: photo250.png
+      last_file: photo374.png
+      first_index: 250
+      last_index: 374
+      role: adaptation_pool
+    - block_id: 3
+      n: 125
+      first_file: photo375.png
+      last_file: photo499.png
+      first_index: 375
+      last_index: 499
+      role: adaptation_pool
+    - block_id: 4
+      n: 125
+      first_file: photo500.png
+      last_file: photo624.png
+      first_index: 500
+      last_index: 624
+      role: adaptation_pool
+    - block_id: 5
+      n: 125
+      first_file: photo625.png
+      last_file: photo749.png
+      first_index: 625
+      last_index: 749
+      role: adaptation_pool
+    - block_id: 6
+      n: 125
+      first_file: photo750.png
+      last_file: photo874.png
+      first_index: 750
+      last_index: 874
+      role: adaptation_pool
+    - block_id: 7
+      n: 125
+      first_file: photo875.png
+      last_file: photo999.png
+      first_index: 875
+      last_index: 999
+      role: adaptation_pool
+    - block_id: 8
+      n: 125
+      first_file: photo1000.png
+      last_file: photo1124.png
+      first_index: 1000
+      last_index: 1124
+      role: dynamic_test
+    - block_id: 9
+      n: 124
+      first_file: photo1125.png
+      last_file: photo1248.png
+      first_index: 1125
+      last_index: 1248
+      role: dynamic_test
+    5:
+    - block_id: 0
+      n: 122
+      first_file: photo0.png
+      last_file: photo121.png
+      first_index: 0
+      last_index: 121
+      role: adaptation_pool
+    - block_id: 1
+      n: 122
+      first_file: photo122.png
+      last_file: photo243.png
+      first_index: 122
+      last_index: 243
+      role: adaptation_pool
+    - block_id: 2
+      n: 122
+      first_file: photo244.png
+      last_file: photo365.png
+      first_index: 244
+      last_index: 365
+      role: adaptation_pool
+    - block_id: 3
+      n: 121
+      first_file: photo366.png
+      last_file: photo486.png
+      first_index: 366
+      last_index: 486
+      role: adaptation_pool
+    - block_id: 4
+      n: 121
+      first_file: photo487.png
+      last_file: photo607.png
+      first_index: 487
+      last_index: 607
+      role: adaptation_pool
+    - block_id: 5
+      n: 121
+      first_file: photo608.png
+      last_file: photo728.png
+      first_index: 608
+      last_index: 728
+      role: adaptation_pool
+    - block_id: 6
+      n: 121
+      first_file: photo729.png
+      last_file: photo849.png
+      first_index: 729
+      last_index: 849
+      role: adaptation_pool
+    - block_id: 7
+      n: 121
+      first_file: photo850.png
+      last_file: photo970.png
+      first_index: 850
+      last_index: 970
+      role: adaptation_pool
+    - block_id: 8
+      n: 121
+      first_file: photo971.png
+      last_file: photo1091.png
+      first_index: 971
+      last_index: 1091
+      role: dynamic_test
+    - block_id: 9
+      n: 121
+      first_file: photo1092.png
+      last_file: photo1212.png
+      first_index: 1092
+      last_index: 1212
+      role: dynamic_test
+    6:
+    - block_id: 0
+      n: 121
+      first_file: photo0.png
+      last_file: photo120.png
+      first_index: 0
+      last_index: 120
+      role: adaptation_pool
+    - block_id: 1
+      n: 121
+      first_file: photo121.png
+      last_file: photo241.png
+      first_index: 121
+      last_index: 241
+      role: adaptation_pool
+    - block_id: 2
+      n: 121
+      first_file: photo242.png
+      last_file: photo362.png
+      first_index: 242
+      last_index: 362
+      role: adaptation_pool
+    - block_id: 3
+      n: 121
+      first_file: photo363.png
+      last_file: photo483.png
+      first_index: 363
+      last_index: 483
+      role: adaptation_pool
+    - block_id: 4
+      n: 121
+      first_file: photo484.png
+      last_file: photo604.png
+      first_index: 484
+      last_index: 604
+      role: adaptation_pool
+    - block_id: 5
+      n: 121
+      first_file: photo605.png
+      last_file: photo725.png
+      first_index: 605
+      last_index: 725
+      role: adaptation_pool
+    - block_id: 6
+      n: 121
+      first_file: photo726.png
+      last_file: photo846.png
+      first_index: 726
+      last_index: 846
+      role: adaptation_pool
+    - block_id: 7
+      n: 121
+      first_file: photo847.png
+      last_file: photo967.png
+      first_index: 847
+      last_index: 967
+      role: adaptation_pool
+    - block_id: 8
+      n: 120
+      first_file: photo968.png
+      last_file: photo1087.png
+      first_index: 968
+      last_index: 1087
+      role: dynamic_test
+    - block_id: 9
+      n: 120
+      first_file: photo1088.png
+      last_file: photo1207.png
+      first_index: 1088
+      last_index: 1207
+      role: dynamic_test
+    7:
+    - block_id: 0
+      n: 131
+      first_file: photo0.png
+      last_file: photo130.png
+      first_index: 0
+      last_index: 130
+      role: adaptation_pool
+    - block_id: 1
+      n: 131
+      first_file: photo131.png
+      last_file: photo261.png
+      first_index: 131
+      last_index: 261
+      role: adaptation_pool
+    - block_id: 2
+      n: 131
+      first_file: photo262.png
+      last_file: photo392.png
+      first_index: 262
+      last_index: 392
+      role: adaptation_pool
+    - block_id: 3
+      n: 131
+      first_file: photo393.png
+      last_file: photo523.png
+      first_index: 393
+      last_index: 523
+      role: adaptation_pool
+    - block_id: 4
+      n: 130
+      first_file: photo524.png
+      last_file: photo653.png
+      first_index: 524
+      last_index: 653
+      role: adaptation_pool
+    - block_id: 5
+      n: 130
+      first_file: photo654.png
+      last_file: photo783.png
+      first_index: 654
+      last_index: 783
+      role: adaptation_pool
+    - block_id: 6
+      n: 130
+      first_file: photo784.png
+      last_file: photo913.png
+      first_index: 784
+      last_index: 913
+      role: adaptation_pool
+    - block_id: 7
+      n: 130
+      first_file: photo914.png
+      last_file: photo1043.png
+      first_index: 914
+      last_index: 1043
+      role: adaptation_pool
+    - block_id: 8
+      n: 130
+      first_file: photo1044.png
+      last_file: photo1173.png
+      first_index: 1044
+      last_index: 1173
+      role: dynamic_test
+    - block_id: 9
+      n: 130
+      first_file: photo1174.png
+      last_file: photo1303.png
+      first_index: 1174
+      last_index: 1303
+      role: dynamic_test
+    8:
+    - block_id: 0
+      n: 121
+      first_file: photo0.png
+      last_file: photo120.png
+      first_index: 0
+      last_index: 120
+      role: adaptation_pool
+    - block_id: 1
+      n: 121
+      first_file: photo121.png
+      last_file: photo241.png
+      first_index: 121
+      last_index: 241
+      role: adaptation_pool
+    - block_id: 2
+      n: 121
+      first_file: photo242.png
+      last_file: photo362.png
+      first_index: 242
+      last_index: 362
+      role: adaptation_pool
+    - block_id: 3
+      n: 121
+      first_file: photo363.png
+      last_file: photo483.png
+      first_index: 363
+      last_index: 483
+      role: adaptation_pool
+    - block_id: 4
+      n: 121
+      first_file: photo484.png
+      last_file: photo604.png
+      first_index: 484
+      last_index: 604
+      role: adaptation_pool
+    - block_id: 5
+      n: 121
+      first_file: photo605.png
+      last_file: photo725.png
+      first_index: 605
+      last_index: 725
+      role: adaptation_pool
+    - block_id: 6
+      n: 121
+      first_file: photo726.png
+      last_file: photo846.png
+      first_index: 726
+      last_index: 846
+      role: adaptation_pool
+    - block_id: 7
+      n: 121
+      first_file: photo847.png
+      last_file: photo967.png
+      first_index: 847
+      last_index: 967
+      role: adaptation_pool
+    - block_id: 8
+      n: 121
+      first_file: photo968.png
+      last_file: photo1088.png
+      first_index: 968
+      last_index: 1088
+      role: dynamic_test
+    - block_id: 9
+      n: 121
+      first_file: photo1089.png
+      last_file: photo1209.png
+      first_index: 1089
+      last_index: 1209
+      role: dynamic_test
+    9:
+    - block_id: 0
+      n: 130
+      first_file: photo0.png
+      last_file: photo129.png
+      first_index: 0
+      last_index: 129
+      role: adaptation_pool
+    - block_id: 1
+      n: 130
+      first_file: photo130.png
+      last_file: photo259.png
+      first_index: 130
+      last_index: 259
+      role: adaptation_pool
+    - block_id: 2
+      n: 130
+      first_file: photo260.png
+      last_file: photo389.png
+      first_index: 260
+      last_index: 389
+      role: adaptation_pool
+    - block_id: 3
+      n: 129
+      first_file: photo390.png
+      last_file: photo518.png
+      first_index: 390
+      last_index: 518
+      role: adaptation_pool
+    - block_id: 4
+      n: 129
+      first_file: photo519.png
+      last_file: photo647.png
+      first_index: 519
+      last_index: 647
+      role: adaptation_pool
+    - block_id: 5
+      n: 129
+      first_file: photo648.png
+      last_file: photo776.png
+      first_index: 648
+      last_index: 776
+      role: adaptation_pool
+    - block_id: 6
+      n: 129
+      first_file: photo777.png
+      last_file: photo905.png
+      first_index: 777
+      last_index: 905
+      role: adaptation_pool
+    - block_id: 7
+      n: 129
+      first_file: photo906.png
+      last_file: photo1034.png
+      first_index: 906
+      last_index: 1034
+      role: adaptation_pool
+    - block_id: 8
+      n: 129
+      first_file: photo1035.png
+      last_file: photo1163.png
+      first_index: 1035
+      last_index: 1163
+      role: dynamic_test
+    - block_id: 9
+      n: 129
+      first_file: photo1164.png
+      last_file: photo1292.png
+      first_index: 1164
+      last_index: 1292
+      role: dynamic_test
+    10:
+    - block_id: 0
+      n: 123
+      first_file: photo0.png
+      last_file: photo122.png
+      first_index: 0
+      last_index: 122
+      role: adaptation_pool
+    - block_id: 1
+      n: 123
+      first_file: photo123.png
+      last_file: photo245.png
+      first_index: 123
+      last_index: 245
+      role: adaptation_pool
+    - block_id: 2
+      n: 123
+      first_file: photo246.png
+      last_file: photo368.png
+      first_index: 246
+      last_index: 368
+      role: adaptation_pool
+    - block_id: 3
+      n: 123
+      first_file: photo369.png
+      last_file: photo491.png
+      first_index: 369
+      last_index: 491
+      role: adaptation_pool
+    - block_id: 4
+      n: 123
+      first_file: photo492.png
+      last_file: photo614.png
+      first_index: 492
+      last_index: 614
+      role: adaptation_pool
+    - block_id: 5
+      n: 123
+      first_file: photo615.png
+      last_file: photo737.png
+      first_index: 615
+      last_index: 737
+      role: adaptation_pool
+    - block_id: 6
+      n: 123
+      first_file: photo738.png
+      last_file: photo860.png
+      first_index: 738
+      last_index: 860
+      role: adaptation_pool
+    - block_id: 7
+      n: 123
+      first_file: photo861.png
+      last_file: photo983.png
+      first_index: 861
+      last_index: 983
+      role: adaptation_pool
+    - block_id: 8
+      n: 123
+      first_file: photo984.png
+      last_file: photo1106.png
+      first_index: 984
+      last_index: 1106
+      role: dynamic_test
+    - block_id: 9
+      n: 123
+      first_file: photo1107.png
+      last_file: photo1229.png
+      first_index: 1107
+      last_index: 1229
+      role: dynamic_test
+    11:
+    - block_id: 0
+      n: 125
+      first_file: photo0.png
+      last_file: photo124.png
+      first_index: 0
+      last_index: 124
+      role: adaptation_pool
+    - block_id: 1
+      n: 125
+      first_file: photo125.png
+      last_file: photo249.png
+      first_index: 125
+      last_index: 249
+      role: adaptation_pool
+    - block_id: 2
+      n: 125
+      first_file: photo250.png
+      last_file: photo374.png
+      first_index: 250
+      last_index: 374
+      role: adaptation_pool
+    - block_id: 3
+      n: 125
+      first_file: photo375.png
+      last_file: photo499.png
+      first_index: 375
+      last_index: 499
+      role: adaptation_pool
+    - block_id: 4
+      n: 125
+      first_file: photo500.png
+      last_file: photo624.png
+      first_index: 500
+      last_index: 624
+      role: adaptation_pool
+    - block_id: 5
+      n: 125
+      first_file: photo625.png
+      last_file: photo749.png
+      first_index: 625
+      last_index: 749
+      role: adaptation_pool
+    - block_id: 6
+      n: 125
+      first_file: photo750.png
+      last_file: photo874.png
+      first_index: 750
+      last_index: 874
+      role: adaptation_pool
+    - block_id: 7
+      n: 125
+      first_file: photo875.png
+      last_file: photo999.png
+      first_index: 875
+      last_index: 999
+      role: adaptation_pool
+    - block_id: 8
+      n: 124
+      first_file: photo1000.png
+      last_file: photo1123.png
+      first_index: 1000
+      last_index: 1123
+      role: dynamic_test
+    - block_id: 9
+      n: 124
+      first_file: photo1124.png
+      last_file: photo1247.png
+      first_index: 1124
+      last_index: 1247
+      role: dynamic_test
+    12:
+    - block_id: 0
+      n: 128
+      first_file: photo0.png
+      last_file: photo127.png
+      first_index: 0
+      last_index: 127
+      role: adaptation_pool
+    - block_id: 1
+      n: 128
+      first_file: photo128.png
+      last_file: photo255.png
+      first_index: 128
+      last_index: 255
+      role: adaptation_pool
+    - block_id: 2
+      n: 128
+      first_file: photo256.png
+      last_file: photo383.png
+      first_index: 256
+      last_index: 383
+      role: adaptation_pool
+    - block_id: 3
+      n: 128
+      first_file: photo384.png
+      last_file: photo511.png
+      first_index: 384
+      last_index: 511
+      role: adaptation_pool
+    - block_id: 4
+      n: 128
+      first_file: photo512.png
+      last_file: photo639.png
+      first_index: 512
+      last_index: 639
+      role: adaptation_pool
+    - block_id: 5
+      n: 128
+      first_file: photo640.png
+      last_file: photo767.png
+      first_index: 640
+      last_index: 767
+      role: adaptation_pool
+    - block_id: 6
+      n: 128
+      first_file: photo768.png
+      last_file: photo895.png
+      first_index: 768
+      last_index: 895
+      role: adaptation_pool
+    - block_id: 7
+      n: 128
+      first_file: photo896.png
+      last_file: photo1023.png
+      first_index: 896
+      last_index: 1023
+      role: adaptation_pool
+    - block_id: 8
+      n: 128
+      first_file: photo1024.png
+      last_file: photo1151.png
+      first_index: 1024
+      last_index: 1151
+      role: dynamic_test
+    - block_id: 9
+      n: 128
+      first_file: photo1152.png
+      last_file: photo1279.png
+      first_index: 1152
+      last_index: 1279
+      role: dynamic_test
+    13:
+    - block_id: 0
+      n: 122
+      first_file: photo0.png
+      last_file: photo121.png
+      first_index: 0
+      last_index: 121
+      role: adaptation_pool
+    - block_id: 1
+      n: 121
+      first_file: photo122.png
+      last_file: photo242.png
+      first_index: 122
+      last_index: 242
+      role: adaptation_pool
+    - block_id: 2
+      n: 121
+      first_file: photo243.png
+      last_file: photo363.png
+      first_index: 243
+      last_index: 363
+      role: adaptation_pool
+    - block_id: 3
+      n: 121
+      first_file: photo364.png
+      last_file: photo484.png
+      first_index: 364
+      last_index: 484
+      role: adaptation_pool
+    - block_id: 4
+      n: 121
+      first_file: photo485.png
+      last_file: photo605.png
+      first_index: 485
+      last_index: 605
+      role: adaptation_pool
+    - block_id: 5
+      n: 121
+      first_file: photo606.png
+      last_file: photo726.png
+      first_index: 606
+      last_index: 726
+      role: adaptation_pool
+    - block_id: 6
+      n: 121
+      first_file: photo727.png
+      last_file: photo847.png
+      first_index: 727
+      last_index: 847
+      role: adaptation_pool
+    - block_id: 7
+      n: 121
+      first_file: photo848.png
+      last_file: photo968.png
+      first_index: 848
+      last_index: 968
+      role: adaptation_pool
+    - block_id: 8
+      n: 121
+      first_file: photo969.png
+      last_file: photo1089.png
+      first_index: 969
+      last_index: 1089
+      role: dynamic_test
+    - block_id: 9
+      n: 121
+      first_file: photo1090.png
+      last_file: photo1210.png
+      first_index: 1090
+      last_index: 1210
+      role: dynamic_test
+    14:
+    - block_id: 0
+      n: 120
+      first_file: photo0.png
+      last_file: photo119.png
+      first_index: 0
+      last_index: 119
+      role: adaptation_pool
+    - block_id: 1
+      n: 120
+      first_file: photo120.png
+      last_file: photo239.png
+      first_index: 120
+      last_index: 239
+      role: adaptation_pool
+    - block_id: 2
+      n: 120
+      first_file: photo240.png
+      last_file: photo359.png
+      first_index: 240
+      last_index: 359
+      role: adaptation_pool
+    - block_id: 3
+      n: 120
+      first_file: photo360.png
+      last_file: photo479.png
+      first_index: 360
+      last_index: 479
+      role: adaptation_pool
+    - block_id: 4
+      n: 120
+      first_file: photo480.png
+      last_file: photo599.png
+      first_index: 480
+      last_index: 599
+      role: adaptation_pool
+    - block_id: 5
+      n: 120
+      first_file: photo600.png
+      last_file: photo719.png
+      first_index: 600
+      last_index: 719
+      role: adaptation_pool
+    - block_id: 6
+      n: 120
+      first_file: photo720.png
+      last_file: photo839.png
+      first_index: 720
+      last_index: 839
+      role: adaptation_pool
+    - block_id: 7
+      n: 120
+      first_file: photo840.png
+      last_file: photo959.png
+      first_index: 840
+      last_index: 959
+      role: adaptation_pool
+    - block_id: 8
+      n: 120
+      first_file: photo960.png
+      last_file: photo1079.png
+      first_index: 960
+      last_index: 1079
+      role: dynamic_test
+    - block_id: 9
+      n: 120
+      first_file: photo1080.png
+      last_file: photo1199.png
+      first_index: 1080
+      last_index: 1199
+      role: dynamic_test
+    15:
+    - block_id: 0
+      n: 648
+      first_file: photo0.png
+      last_file: photo647.png
+      first_index: 0
+      last_index: 647
+      role: adaptation_pool
+    - block_id: 1
+      n: 648
+      first_file: photo648.png
+      last_file: photo1295.png
+      first_index: 648
+      last_index: 1295
+      role: adaptation_pool
+    - block_id: 2
+      n: 648
+      first_file: photo1296.png
+      last_file: photo1943.png
+      first_index: 1296
+      last_index: 1943
+      role: adaptation_pool
+    - block_id: 3
+      n: 648
+      first_file: photo1944.png
+      last_file: photo2591.png
+      first_index: 1944
+      last_index: 2591
+      role: adaptation_pool
+    - block_id: 4
+      n: 647
+      first_file: photo2592.png
+      last_file: photo3238.png
+      first_index: 2592
+      last_index: 3238
+      role: adaptation_pool
+    - block_id: 5
+      n: 647
+      first_file: photo3239.png
+      last_file: photo3885.png
+      first_index: 3239
+      last_index: 3885
+      role: adaptation_pool
+    - block_id: 6
+      n: 647
+      first_file: photo3886.png
+      last_file: photo4532.png
+      first_index: 3886
+      last_index: 4532
+      role: adaptation_pool
+    - block_id: 7
+      n: 647
+      first_file: photo4533.png
+      last_file: photo5179.png
+      first_index: 4533
+      last_index: 5179
+      role: adaptation_pool
+    - block_id: 8
+      n: 647
+      first_file: photo5180.png
+      last_file: photo5826.png
+      first_index: 5180
+      last_index: 5826
+      role: dynamic_test
+    - block_id: 9
+      n: 647
+      first_file: photo5827.png
+      last_file: photo6473.png
+      first_index: 5827
+      last_index: 6473
+      role: dynamic_test
+    16:
+    - block_id: 0
+      n: 138
+      first_file: photo0.png
+      last_file: photo137.png
+      first_index: 0
+      last_index: 137
+      role: adaptation_pool
+    - block_id: 1
+      n: 137
+      first_file: photo138.png
+      last_file: photo274.png
+      first_index: 138
+      last_index: 274
+      role: adaptation_pool
+    - block_id: 2
+      n: 137
+      first_file: photo275.png
+      last_file: photo411.png
+      first_index: 275
+      last_index: 411
+      role: adaptation_pool
+    - block_id: 3
+      n: 137
+      first_file: photo412.png
+      last_file: photo548.png
+      first_index: 412
+      last_index: 548
+      role: adaptation_pool
+    - block_id: 4
+      n: 137
+      first_file: photo549.png
+      last_file: photo685.png
+      first_index: 549
+      last_index: 685
+      role: adaptation_pool
+    - block_id: 5
+      n: 137
+      first_file: photo686.png
+      last_file: photo822.png
+      first_index: 686
+      last_index: 822
+      role: adaptation_pool
+    - block_id: 6
+      n: 137
+      first_file: photo823.png
+      last_file: photo959.png
+      first_index: 823
+      last_index: 959
+      role: adaptation_pool
+    - block_id: 7
+      n: 137
+      first_file: photo960.png
+      last_file: photo1096.png
+      first_index: 960
+      last_index: 1096
+      role: adaptation_pool
+    - block_id: 8
+      n: 137
+      first_file: photo1097.png
+      last_file: photo1233.png
+      first_index: 1097
+      last_index: 1233
+      role: dynamic_test
+    - block_id: 9
+      n: 137
+      first_file: photo1234.png
+      last_file: photo1370.png
+      first_index: 1234
+      last_index: 1370
+      role: dynamic_test
+    17:
+    - block_id: 0
+      n: 136
+      first_file: photo0.png
+      last_file: photo135.png
+      first_index: 0
+      last_index: 135
+      role: adaptation_pool
+    - block_id: 1
+      n: 136
+      first_file: photo136.png
+      last_file: photo271.png
+      first_index: 136
+      last_index: 271
+      role: adaptation_pool
+    - block_id: 2
+      n: 136
+      first_file: photo272.png
+      last_file: photo407.png
+      first_index: 272
+      last_index: 407
+      role: adaptation_pool
+    - block_id: 3
+      n: 136
+      first_file: photo408.png
+      last_file: photo543.png
+      first_index: 408
+      last_index: 543
+      role: adaptation_pool
+    - block_id: 4
+      n: 136
+      first_file: photo544.png
+      last_file: photo679.png
+      first_index: 544
+      last_index: 679
+      role: adaptation_pool
+    - block_id: 5
+      n: 136
+      first_file: photo680.png
+      last_file: photo815.png
+      first_index: 680
+      last_index: 815
+      role: adaptation_pool
+    - block_id: 6
+      n: 136
+      first_file: photo816.png
+      last_file: photo951.png
+      first_index: 816
+      last_index: 951
+      role: adaptation_pool
+    - block_id: 7
+      n: 136
+      first_file: photo952.png
+      last_file: photo1087.png
+      first_index: 952
+      last_index: 1087
+      role: adaptation_pool
+    - block_id: 8
+      n: 135
+      first_file: photo1088.png
+      last_file: photo1222.png
+      first_index: 1088
+      last_index: 1222
+      role: dynamic_test
+    - block_id: 9
+      n: 135
+      first_file: photo1223.png
+      last_file: photo1357.png
+      first_index: 1223
+      last_index: 1357
+      role: dynamic_test
+    18:
+    - block_id: 0
+      n: 123
+      first_file: photo0.png
+      last_file: photo122.png
+      first_index: 0
+      last_index: 122
+      role: adaptation_pool
+    - block_id: 1
+      n: 123
+      first_file: photo123.png
+      last_file: photo245.png
+      first_index: 123
+      last_index: 245
+      role: adaptation_pool
+    - block_id: 2
+      n: 123
+      first_file: photo246.png
+      last_file: photo368.png
+      first_index: 246
+      last_index: 368
+      role: adaptation_pool
+    - block_id: 3
+      n: 123
+      first_file: photo369.png
+      last_file: photo491.png
+      first_index: 369
+      last_index: 491
+      role: adaptation_pool
+    - block_id: 4
+      n: 123
+      first_file: photo492.png
+      last_file: photo614.png
+      first_index: 492
+      last_index: 614
+      role: adaptation_pool
+    - block_id: 5
+      n: 123
+      first_file: photo615.png
+      last_file: photo737.png
+      first_index: 615
+      last_index: 737
+      role: adaptation_pool
+    - block_id: 6
+      n: 123
+      first_file: photo738.png
+      last_file: photo860.png
+      first_index: 738
+      last_index: 860
+      role: adaptation_pool
+    - block_id: 7
+      n: 123
+      first_file: photo861.png
+      last_file: photo983.png
+      first_index: 861
+      last_index: 983
+      role: adaptation_pool
+    - block_id: 8
+      n: 123
+      first_file: photo984.png
+      last_file: photo1106.png
+      first_index: 984
+      last_index: 1106
+      role: dynamic_test
+    - block_id: 9
+      n: 123
+      first_file: photo1107.png
+      last_file: photo1229.png
+      first_index: 1107
+      last_index: 1229
+      role: dynamic_test
+    19:
+    - block_id: 0
+      n: 123
+      first_file: photo0.png
+      last_file: photo122.png
+      first_index: 0
+      last_index: 122
+      role: adaptation_pool
+    - block_id: 1
+      n: 123
+      first_file: photo123.png
+      last_file: photo245.png
+      first_index: 123
+      last_index: 245
+      role: adaptation_pool
+    - block_id: 2
+      n: 123
+      first_file: photo246.png
+      last_file: photo368.png
+      first_index: 246
+      last_index: 368
+      role: adaptation_pool
+    - block_id: 3
+      n: 123
+      first_file: photo369.png
+      last_file: photo491.png
+      first_index: 369
+      last_index: 491
+      role: adaptation_pool
+    - block_id: 4
+      n: 123
+      first_file: photo492.png
+      last_file: photo614.png
+      first_index: 492
+      last_index: 614
+      role: adaptation_pool
+    - block_id: 5
+      n: 123
+      first_file: photo615.png
+      last_file: photo737.png
+      first_index: 615
+      last_index: 737
+      role: adaptation_pool
+    - block_id: 6
+      n: 123
+      first_file: photo738.png
+      last_file: photo860.png
+      first_index: 738
+      last_index: 860
+      role: adaptation_pool
+    - block_id: 7
+      n: 122
+      first_file: photo861.png
+      last_file: photo982.png
+      first_index: 861
+      last_index: 982
+      role: adaptation_pool
+    - block_id: 8
+      n: 122
+      first_file: photo983.png
+      last_file: photo1104.png
+      first_index: 983
+      last_index: 1104
+      role: dynamic_test
+    - block_id: 9
+      n: 122
+      first_file: photo1105.png
+      last_file: photo1226.png
+      first_index: 1105
+      last_index: 1226
+      role: dynamic_test
+    20:
+    - block_id: 0
+      n: 122
+      first_file: photo0.png
+      last_file: photo121.png
+      first_index: 0
+      last_index: 121
+      role: adaptation_pool
+    - block_id: 1
+      n: 122
+      first_file: photo122.png
+      last_file: photo243.png
+      first_index: 122
+      last_index: 243
+      role: adaptation_pool
+    - block_id: 2
+      n: 122
+      first_file: photo244.png
+      last_file: photo365.png
+      first_index: 244
+      last_index: 365
+      role: adaptation_pool
+    - block_id: 3
+      n: 122
+      first_file: photo366.png
+      last_file: photo487.png
+      first_index: 366
+      last_index: 487
+      role: adaptation_pool
+    - block_id: 4
+      n: 121
+      first_file: photo488.png
+      last_file: photo608.png
+      first_index: 488
+      last_index: 608
+      role: adaptation_pool
+    - block_id: 5
+      n: 121
+      first_file: photo609.png
+      last_file: photo729.png
+      first_index: 609
+      last_index: 729
+      role: adaptation_pool
+    - block_id: 6
+      n: 121
+      first_file: photo730.png
+      last_file: photo850.png
+      first_index: 730
+      last_index: 850
+      role: adaptation_pool
+    - block_id: 7
+      n: 121
+      first_file: photo851.png
+      last_file: photo971.png
+      first_index: 851
+      last_index: 971
+      role: adaptation_pool
+    - block_id: 8
+      n: 121
+      first_file: photo972.png
+      last_file: photo1092.png
+      first_index: 972
+      last_index: 1092
+      role: dynamic_test
+    - block_id: 9
+      n: 121
+      first_file: photo1093.png
+      last_file: photo1213.png
+      first_index: 1093
+      last_index: 1213
+      role: dynamic_test
+  totals:
+    adaptation_pool: 24355
+    dynamic_test: 6072
+  pool_per_class:
+    1: 1118
+    2: 1024
+    3: 986
+    4: 1000
+    5: 971
+    6: 968
+    7: 1044
+    8: 968
+    9: 1035
+    10: 984
+    11: 1000
+    12: 1024
+    13: 969
+    14: 960
+    15: 5180
+    16: 1097
+    17: 1088
+    18: 984
+    19: 983
+    20: 972
+adaptation_protocols:
+  primary:
+    name: dynamic_adaptation_natural
+    manifest: configs/manifests/dynamic_adaptation_natural.tsv
+    rule: uniform random draw of 19200 frames from the 24355-frame pool, no class information used; natural class
+      distribution of the pool retained
+    seed: 20260822
+    n: 19200
+    balanced: false
+    realized_per_class_counts_audit_only:
+      1: 869
+      2: 810
+      3: 775
+      4: 770
+      5: 773
+      6: 744
+      7: 815
+      8: 759
+      9: 829
+      10: 765
+      11: 768
+      12: 817
+      13: 792
+      14: 749
+      15: 4108
+      16: 863
+      17: 867
+      18: 767
+      19: 780
+      20: 780
+  secondary:
+    name: dynamic_adaptation_balanced
+    manifest: configs/manifests/dynamic_adaptation_balanced.tsv
+    rule: 960 frames per class drawn from that class's pool; CONSTRUCTION-TIME LABEL-AWARE (directory labels used
+      once here); manifest carries no labels
+    seed: 20260822 + class_id
+    n: 19200
+    balanced: true
+    quota_per_class: 960
+    disclosure: must be reported as a secondary controlled analysis and disclosed in the paper
+  stream: fixed permutation (seeds above); batches read in stream_position order; no future batches
+  label_isolation: 'adaptation manifests/exports contain none of: class_label, class_folder_id, source_path, frame_index,
+    direction_id, md5. DISCLOSURE: configs/manifests/internal/audit_all_primary.tsv is the reverse map (sample_id -> source_path,
+    class) and must be withheld whenever an adaptation manifest/export is distributed for blind evaluation; it is
+    for audit/evaluation code only'
+  audit_manifest:
+    path: configs/manifests/internal/audit_all_primary.tsv
+    contains: labels, source paths, adaptation membership and stream positions for all 45851 primary files
+    access: audit/evaluation only; never readable by adaptation code; withhold when distributing adaptation manifests/exports
+  frame_index_exclusion_reason: in the pool, frame_index > 1117 occurs only in class 15; the literal filename index
+    would identify the majority class
+duplicates:
+  method: exact MD5 over all primary files, computed before split assignment; group = split unit
+  groups:
+  - duplicate_group_id: c115ed27b8e2e82d7a736d0e117d4b58
+    n_files: 16
+    directory: data/SPAD_Electronics/0_HZ/5/direction_2
+    files: photo48.png .. photo63.png
+    content: all pixels == 255 (fully saturated)
+    split: static_train
+    policy: all 16 kept, no filtering
+  near_duplicates: NOT CHECKED (no perceptual hash run); do not claim zero near-duplicates
+saturation:
+  definition: pixel value == 255
+  fields:
+  - has_saturation
+  - n_saturated_px
+  - is_fully_saturated
+  policy: all images kept; no method-specific filtering
+  primary_images_with_saturation: 1416
+  by_split:
+    static_train: 304
+    static_validation: 64
+    static_test: 99
+    adaptation_pool: 691
+    dynamic_test: 258
+manifests:
+  directory: configs/manifests
+  format: TSV, UTF-8, empty string = null
+  md5:
+    static_train.tsv: e8a12826e9269259dae364ad10c8be8f
+    static_validation.tsv: 72f8566e9f59468b8a3ca88bd2590764
+    static_test.tsv: 92575beeb97e27c92002d33dfc1bf739
+    dynamic_test.tsv: 94a3b03e17c26a711dc5e1a0a552fc4d
+    dynamic_adaptation_natural.tsv: 6003480126eca286acbe325e3a62a8a0
+    dynamic_adaptation_balanced.tsv: 26618fcfa816db3d8c1bab9b1bb56354
+    internal/audit_all_primary.tsv: 98cafb625cf54458306198ecfefc53f2
+    excluded_mix.tsv: 25083a194970e22ee106bc61da787d43
+  labeled_columns:
+  - sample_id
+  - source_path
+  - domain
+  - condition
+  - split
+  - class_label
+  - class_folder_id
+  - direction_id
+  - block_id
+  - frame_index
+  - has_saturation
+  - n_saturated_px
+  - is_fully_saturated
+  - duplicate_group_id
+  - md5
+  adaptation_columns:
+  - sample_id
+  - domain
+  - condition
+  - split
+  - protocol
+  - block_id
+  - has_saturation
+  - n_saturated_px
+  - is_fully_saturated
+  - duplicate_group_id
+  - stream_position
+unverifiable_from_repository:
+- that photoN index order equals acquisition/temporal order
+- that the five directions are distinct acquisition sessions
+- the 32->640 interpolation method (project convention only)
+- that data/SPAD_Electronics_32_32 equals the raw sensor export (it equals LANCZOS(640->32))
+- near-duplicate structure (not checked)

@@ -1,0 +1,54 @@
+# Leave-one-direction-out (LODO) pilot — Step 4 viewpoint/generalisation diagnostic. NOT a TTA method.
+# Five folds (configs/lodo_direction/leave_out_<k>.yaml), seed 0 only. Each fold trains a source-only
+# ResNet-50 on FOUR static directions and is evaluated post hoc on all five static directions and on
+# dynamic_test. No dynamic data/labels are used for training; there is no validation direction, so the
+# checkpoint rule is the fixed FINAL epoch (30). `direction_id` is a direction/viewpoint *proxy* (documented
+# as mounting orientation in the repo; not verified from the files).
+# Every training value mirrors the approved source-only configuration (configs/source_only_resnet50.yaml).
+
+protocol: configs/splits.yaml            # split identifier: icassp2027_spad_electronics_v1
+experiment: lodo_direction_resnet50
+analysis_type: lodo_direction
+output_root: experiments/lodo_direction  # experiments/lodo_direction/leave_out_<k>/
+
+data:
+  static_manifests: [static_train, static_validation, static_test]   # all static frames with direction_id (labels permitted: static)
+  dynamic_eval_split: dynamic_test       # evaluated post hoc only; labels never used for training/selection
+  input_policy: approved                 # 640->224 bilinear antialias, L->[L,L,L], ImageNet norm
+  train_augmentation: none
+  num_workers: 8
+
+model:
+  backbone: resnet50
+  pretrained: IMAGENET1K_V2
+  proj_dim: 0
+  num_classes: 20
+
+train:
+  sampler: class_balanced
+  loss: cross_entropy
+  epochs: 30
+  batch_size: 64
+  samples_per_epoch: len_train           # = number of training frames (same rule as source-only)
+  optimizer: sgd
+  lr: 0.01
+  momentum: 0.9
+  nesterov: true
+  weight_decay: 0.0005
+  scheduler: cosine
+  amp: bf16
+  checkpoint_rule: final_epoch           # fixed, pre-specified; no validation/test-based selection
+  seed: 0
+
+label_access_policy: "training: static directions in train_directions only (directory-level labels); evaluation labels (held-out direction, dynamic_test) read only post hoc by the evaluator; internal audit manifest never opened"
+
+wandb:
+  enabled: true
+  project: spad-icassp2027
+  group: icassp2027/step4/lodo           # repo idiom family/subfamily (cf. phase1/1.1); seed in run name + tag
+  tags: [icassp2027, step4, lodo, viewpoint_diagnostic, seed0, no_tta]
+  mode: online                           # falls back to offline if the API is unreachable
+  row_level_data: false                  # never upload images, bytes, audit manifests or per-sample labels
+
+eval:
+  batch_size: 128

@@ -1,0 +1,24 @@
+SPAD-TTA code and sample data (this repository)
+Copyright (c) 2026 Jui-Huang Tsai and contributors
+
+This work is licensed under the Creative Commons Attribution-NonCommercial 4.0
+International License (CC BY-NC 4.0).
+
+To view a copy of this license, visit
+https://creativecommons.org/licenses/by-nc/4.0/
+or see the full legal code at
+https://creativecommons.org/licenses/by-nc/4.0/legalcode
+
+You are free to share and adapt this material for any purpose other than
+commercial use, provided you give appropriate credit, provide a link to the
+license, and indicate if changes were made.
+
+Note: CC BY-NC 4.0 is a content license, not a standard software license (it
+carries no patent grant and its ShareAlike/attribution mechanics were designed
+for creative works). It was chosen deliberately for this academic-only release;
+if you need a permissive software license for downstream use, contact the
+authors.
+
+This license applies to the code and sample data in this repository. It does
+NOT apply to anything under `third_party/` in the source monorepo this project
+was extracted from — none of that code is included here.

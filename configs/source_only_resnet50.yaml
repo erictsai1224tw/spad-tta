@@ -1,0 +1,42 @@
+# Source-only ResNet-50 — ICASSP-2027 baseline.
+#   python -m src.tasks.icassp2027.train_source --config configs/source_only_resnet50.yaml --seed 0
+#
+# STATUS: APPROVED 2026-08-22 (Step 4). Every value marked PROPOSED below was approved verbatim after
+# the batch-size benchmark (bs 64, lr 0.01 confirmed). Do not change without a new approval.
+
+protocol: configs/splits.yaml            # split identifier: icassp2027_spad_electronics_v1
+experiment: source_only_resnet50
+output_root: experiments/source_only     # experiments/source_only/seed<k>/
+
+data:
+  train_split: static_train              # fixed by protocol — the only split training may read
+  select_split: static_validation        # fixed by protocol — model selection only
+  final_eval_splits: [static_test, dynamic_test]
+  input_policy: approved                 # src/tasks/icassp2027/data.INPUT_POLICY (640->224 bilinear antialias, L->[L,L,L], ImageNet norm)
+  train_augmentation: none               # PROPOSED: none (not specified by the protocol)
+  num_workers: 8
+
+model:
+  backbone: resnet50
+  pretrained: IMAGENET1K_V2              # PROPOSED: ImageNet-pretrained (torchvision V2 weights)
+  proj_dim: 0                            # PROPOSED: 0 -> feature = 2048-d avgpool output; >0 adds Linear+BN+ReLU
+  num_classes: 20
+
+train:
+  sampler: class_balanced                # fixed by protocol (WeightedRandomSampler, 1/n_class, with replacement)
+  loss: cross_entropy                    # fixed by protocol (plain CE, no smoothing/reweighting)
+  epochs: 30                             # PROPOSED
+  batch_size: 64                         # PROPOSED
+  samples_per_epoch: 9733                # PROPOSED: = len(static_train) draws per epoch (153 steps)
+  optimizer: sgd                         # PROPOSED
+  lr: 0.01                               # PROPOSED
+  momentum: 0.9                          # PROPOSED
+  nesterov: true                         # PROPOSED
+  weight_decay: 0.0005                   # PROPOSED
+  scheduler: cosine                      # PROPOSED: cosine to 0 over `epochs`, no warm-up
+  amp: bf16                              # PROPOSED (numerics only)
+  selection_metric: macro_f1             # PROPOSED: best static_validation macro-F1 (tie -> balanced accuracy)
+  seeds: [0, 1, 2]                       # fixed by protocol
+
+eval:
+  batch_size: 128

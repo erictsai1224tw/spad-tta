@@ -1,0 +1,46 @@
+# Step 5A — target-statistics (normalization-only) adaptation baseline. Offline, unsupervised, NOT strict online TTA.
+#   python -m src.tasks.icassp2027.adapt_target_stats --config configs/target_stats_resnet50.yaml --seed 0 --variant natural --passes 1
+#
+# Definition (exactly):  source model parameters FROZEN; classifier FROZEN; BatchNorm affine (gamma/beta) FROZEN;
+#   BatchNorm running mean/var RESET and re-estimated from unlabeled target adaptation batches (cumulative average,
+#   momentum=None, forward passes only, torch.no_grad, no optimizer).  Evaluated once on dynamic_test afterwards.
+# Framing: the study asks whether offline unsupervised TTA improves or preserves dynamic SPAD classification under
+#   MIXED sensing-condition and viewpoint variation; the source-only gap is not attributed to sensing condition alone.
+
+protocol: configs/splits.yaml            # icassp2027_spad_electronics_v1
+experiment: target_stats_resnet50
+method: target_statistics_bn_running_stats
+output_root: experiments/target_stats    # experiments/target_stats/seed<k>/<variant>/pass<p>/
+
+source_checkpoints:
+  0: experiments/source_only/seed0/best_model.pt
+  1: experiments/source_only/seed1/best_model.pt
+  2: experiments/source_only/seed2/best_model.pt
+
+adaptation:
+  variants:
+    natural:  {export: data_exports/spad_electronics_hf/dynamic_adaptation_natural.parquet,  manifest: configs/manifests/dynamic_adaptation_natural.tsv,  role: primary}
+    balanced: {export: data_exports/spad_electronics_hf/dynamic_adaptation_balanced.parquet, manifest: configs/manifests/dynamic_adaptation_balanced.tsv, role: secondary}
+  n_target: 19200
+  batch_size: 32                         # fixed budget for every seed/variant
+  passes_primary: 1
+  passes_secondary: [5, 10]              # pre-specified; never chosen on target-test labels
+  stream: fixed stream_position order from the manifest; no shuffling; no future batches
+  bn_momentum: null                      # cumulative average over the pass (exact target statistics)
+  reset_running_stats: true
+  update_scope: bn_running_stats_only
+  frozen: [all_weights, classifier_head, bn_affine]
+  gradients: none
+  label_access: none (adaptation export carries no class_label/class_folder_id/source_path/frame_index)
+
+eval:
+  split: dynamic_test                    # post hoc only
+  batch_size: 128
+
+wandb:
+  enabled: true
+  entity: erictsai1224tw
+  project: spad-icassp2027
+  group: icassp2027/step5a/target_stats
+  tags: [icassp2027, step5a, target_stats, norm_only, no_gradients, post_hoc_evaluation]
+  mode: online

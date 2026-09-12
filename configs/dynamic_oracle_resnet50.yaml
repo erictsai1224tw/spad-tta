@@ -1,0 +1,48 @@
+# Dynamic supervised reference ("dynamic oracle analysis") — Step 4 diagnostic reference, NOT a TTA method.
+#   python -m src.tasks.icassp2027.train_dynamic_oracle --config configs/dynamic_oracle_resnet50.yaml --seed 0
+#
+# Same-target-condition supervised reference: ResNet-50 trained with directory-level labels on the FULL
+# dynamic pool (blocks 0-7, 24,355 frames), evaluated once on dynamic_test (blocks 8-9).  No dynamic
+# validation split exists, so there is NO checkpoint selection: the epoch-30 (final) checkpoint is used.
+# dynamic_test labels are never read during training or selection.  This is not an upper bound and not
+# an unsupervised method; filename-index blocks are not a repository-verified temporal/session split.
+# Every training value mirrors the approved source-only configuration (configs/source_only_resnet50.yaml).
+
+protocol: configs/splits.yaml            # split identifier: icassp2027_spad_electronics_v1
+experiment: dynamic_oracle_resnet50
+role: dynamic supervised reference (same-target-condition); diagnostic only; not TTA; not an upper bound
+output_root: experiments/dynamic_oracle  # experiments/dynamic_oracle/seed<k>/
+
+data:
+  train_split: dynamic_pool_blocks_0_7   # all adaptation-pool frames, directory-level labels (NOT the natural/balanced subsets)
+  train_manifest: experiments/dynamic_oracle/dynamic_pool_labeled.tsv   # generated from configs/splits.yaml block table + disk
+  select_split: none                     # no dynamic validation; no selection
+  final_eval_splits: [dynamic_test]
+  input_policy: approved                 # 640->224 bilinear antialias, L->[L,L,L], ImageNet norm
+  train_augmentation: none
+  num_workers: 8
+
+model:
+  backbone: resnet50
+  pretrained: IMAGENET1K_V2
+  proj_dim: 0
+  num_classes: 20
+
+train:
+  sampler: class_balanced
+  loss: cross_entropy
+  epochs: 30
+  batch_size: 64
+  samples_per_epoch: 24355               # = len(pool) balanced draws per epoch (same rule as source-only: len(train set)) -> 380 steps/epoch
+  optimizer: sgd
+  lr: 0.01
+  momentum: 0.9
+  nesterov: true
+  weight_decay: 0.0005
+  scheduler: cosine
+  amp: bf16
+  checkpoint_rule: final_epoch            # fixed, pre-specified; no validation/test-based selection
+  seeds: [0, 1, 2]
+
+eval:
+  batch_size: 128

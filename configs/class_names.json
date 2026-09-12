@@ -1,0 +1,23 @@
+{
+  "_comment": "SPAD-Bench class-id → display-name mapping for paper figures and prose. The canonical YAML class list (with trailing-underscore-style names) lives at conf/dataset/electronics.yaml; this JSON is the figure-friendly variant (spaces, abbreviations) used by scripts/render_phase_c_figures.py and the paper §3.3 data card.",
+  "class_01": "inductor",
+  "class_02": "resistor",
+  "class_03": "LED",
+  "class_04": "film capacitor",
+  "class_05": "tactile switch",
+  "class_06": "oscillator",
+  "class_07": "4-pin RA header",
+  "class_08": "5-pin housing",
+  "class_09": "USB-C receptacle",
+  "class_10": "humidity sensor",
+  "class_11": "3-pin RA header",
+  "class_12": "straight header",
+  "class_13": "vibration switch",
+  "class_14": "shock sensor",
+  "class_15": "electrolytic cap.",
+  "class_16": "optical switch A",
+  "class_17": "optical switch B",
+  "class_18": "photointerrupter",
+  "class_19": "photodiode",
+  "class_20": "passive buzzer"
+}
