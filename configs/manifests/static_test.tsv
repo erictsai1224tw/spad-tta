@@ -4,8 +4,6 @@ spad026876	data/SPAD_Electronics/0_HZ/1/direction_5/photo12.png	static	0_HZ	stat
 spad030409	data/SPAD_Electronics/0_HZ/1/direction_5/photo32.png	static	0_HZ	static_test	inductor	1	5		32	False	0	False		e14aa570e6738af5b76de9ab733dadd5
 spad007246	data/SPAD_Electronics/0_HZ/1/direction_5/photo54.png	static	0_HZ	static_test	inductor	1	5		54	False	0	False		b38b62e399e60efabebbcb9431afb795
 spad026802	data/SPAD_Electronics/0_HZ/1/direction_5/photo76.png	static	0_HZ	static_test	inductor	1	5		76	False	0	False		67c82a192d0dd03b084d1f64fe655d48
-spad005381	data/SPAD_Electronics/0_HZ/2/direction_5/photo0.png	static	0_HZ	static_test	resistor	2	5		0	True	243200	False		f9f4701ad129d3aa6cb42caeac31b8c2
-spad008528	data/SPAD_Electronics/0_HZ/2/direction_5/photo12.png	static	0_HZ	static_test	resistor	2	5		12	True	243200	False		f65f964dcb69edd501a7f8df612312be
 spad001079	data/SPAD_Electronics/0_HZ/2/direction_5/photo30.png	static	0_HZ	static_test	resistor	2	5		30	False	0	False		0f6e7dc164ed013de57d58f76a0a3534
 spad030846	data/SPAD_Electronics/0_HZ/2/direction_5/photo52.png	static	0_HZ	static_test	resistor	2	5		52	False	0	False		cf60e00507efde42c3091550b4f7db7d
 spad026837	data/SPAD_Electronics/0_HZ/2/direction_5/photo74.png	static	0_HZ	static_test	resistor	2	5		74	False	0	False		31e6820243412c7804003ac5e44d1677
@@ -47,7 +45,6 @@ spad010661	data/SPAD_Electronics/0_HZ/9/direction_5/photo74.png	static	0_HZ	stat
 spad004216	data/SPAD_Electronics/0_HZ/10/direction_5/photo0.png	static	0_HZ	static_test	humidity_sensor_module	10	5		0	False	0	False		f7c7899872bd6bb87ffcab9e7ab94534
 spad044342	data/SPAD_Electronics/0_HZ/10/direction_5/photo127.png	static	0_HZ	static_test	humidity_sensor_module	10	5		127	False	0	False		d888ca549d82760e530e4c03f1211d44
 spad022120	data/SPAD_Electronics/0_HZ/10/direction_5/photo156.png	static	0_HZ	static_test	humidity_sensor_module	10	5		156	False	0	False		81c2b4d8ac2a0af714c1ec58dbc5a525
-spad027597	data/SPAD_Electronics/0_HZ/10/direction_5/photo40.png	static	0_HZ	static_test	humidity_sensor_module	10	5		40	True	396800	False		d9d67ac382b18bd1d8791cff0eb95d25
 spad038500	data/SPAD_Electronics/0_HZ/10/direction_5/photo7.png	static	0_HZ	static_test	humidity_sensor_module	10	5		7	False	0	False		24dfae09c30362dc29c827cdb54224c6
 spad013057	data/SPAD_Electronics/0_HZ/11/direction_5/photo0.png	static	0_HZ	static_test	3_pin_right_angle_male_header	11	5		0	False	0	False		9a6aa0641e0c9fecd2007ab16d320b3e
 spad003012	data/SPAD_Electronics/0_HZ/11/direction_5/photo123.png	static	0_HZ	static_test	3_pin_right_angle_male_header	11	5		123	False	0	False		3f1ebdb23dfb8eee748e1641452b94f3
@@ -80,7 +77,6 @@ spad026893	data/SPAD_Electronics/0_HZ/16/direction_5/photo27.png	static	0_HZ	sta
 spad007150	data/SPAD_Electronics/0_HZ/16/direction_5/photo50.png	static	0_HZ	static_test	slotted_optical_switch_A	16	5		50	False	0	False		77af1c2dd8f40a6946b3a8275791c9dd
 spad007442	data/SPAD_Electronics/0_HZ/16/direction_5/photo74.png	static	0_HZ	static_test	slotted_optical_switch_A	16	5		74	False	0	False		00ddb641b884b91be7d5c8df97bba028
 spad027074	data/SPAD_Electronics/0_HZ/17/direction_5/photo0.png	static	0_HZ	static_test	slotted_optical_switch_B	17	5		0	False	0	False		3c706ba9dff8c5880cb5bb8c6f8871b9
-spad000681	data/SPAD_Electronics/0_HZ/17/direction_5/photo122.png	static	0_HZ	static_test	slotted_optical_switch_B	17	5		122	True	230400	False		80d0012d08a0dd4fc633a1d73d290fcf
 spad044749	data/SPAD_Electronics/0_HZ/17/direction_5/photo23.png	static	0_HZ	static_test	slotted_optical_switch_B	17	5		23	False	0	False		86a421591722cdcfb831541e8a66b251
 spad002730	data/SPAD_Electronics/0_HZ/17/direction_5/photo48.png	static	0_HZ	static_test	slotted_optical_switch_B	17	5		48	False	0	False		07ad11f2eee6c6608371250b4852befc
 spad008953	data/SPAD_Electronics/0_HZ/17/direction_5/photo72.png	static	0_HZ	static_test	slotted_optical_switch_B	17	5		72	False	0	False		ddb0963b1ccc53c8ade93221862493c3
@@ -88,7 +84,6 @@ spad033548	data/SPAD_Electronics/0_HZ/18/direction_5/photo0.png	static	0_HZ	stat
 spad034321	data/SPAD_Electronics/0_HZ/18/direction_5/photo122.png	static	0_HZ	static_test	photointerrupter	18	5		122	False	0	False		43715a4ec332e12be26b48223b703362
 spad027186	data/SPAD_Electronics/0_HZ/18/direction_5/photo25.png	static	0_HZ	static_test	photointerrupter	18	5		25	False	0	False		03605c3c88972159dfa3e9aca4bb43de
 spad032012	data/SPAD_Electronics/0_HZ/18/direction_5/photo5.png	static	0_HZ	static_test	photointerrupter	18	5		5	False	0	False		8255e11db49531081da92c9b86297174
-spad037707	data/SPAD_Electronics/0_HZ/18/direction_5/photo74.png	static	0_HZ	static_test	photointerrupter	18	5		74	True	51200	False		a54ead913c80040d637ac218da058c46
 spad016632	data/SPAD_Electronics/0_HZ/19/direction_5/photo0.png	static	0_HZ	static_test	photodiode	19	5		0	False	0	False		6669de0a564003fd86bbf342e27e0bf5
 spad000854	data/SPAD_Electronics/0_HZ/19/direction_5/photo120.png	static	0_HZ	static_test	photodiode	19	5		120	False	0	False		13c75cb4f8517061d111ab2f09a2b356
 spad005748	data/SPAD_Electronics/0_HZ/19/direction_5/photo29.png	static	0_HZ	static_test	photodiode	19	5		29	False	0	False		db4fdb4b754337bc6590a2ebc965037e

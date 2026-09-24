@@ -10,7 +10,6 @@ spad016028	data/SPAD_Electronics/0_HZ/2/direction_2/photo103.png	static	0_HZ	sta
 spad020258	data/SPAD_Electronics/0_HZ/2/direction_2/photo57.png	static	0_HZ	static_train	resistor	2	2		57	False	0	False		fe0c88726d7e43aec15887cdd53662fa
 spad029532	data/SPAD_Electronics/0_HZ/2/direction_3/photo17.png	static	0_HZ	static_train	resistor	2	3		17	False	0	False		c5ca667f8214d23fa2783cdddfa6d2c7
 spad008034	data/SPAD_Electronics/0_HZ/3/direction_1/photo0.png	static	0_HZ	static_train	LED	3	1		0	False	0	False		9f659088a5dd5119944ebf800313788e
-spad045824	data/SPAD_Electronics/0_HZ/3/direction_1/photo28.png	static	0_HZ	static_train	LED	3	1		28	True	204800	False		393beaf36f45eb334358637e7b09df91
 spad021973	data/SPAD_Electronics/0_HZ/3/direction_2/photo113.png	static	0_HZ	static_train	LED	3	2		113	False	0	False		f3640c578109b75116cae25603c1acc7
 spad044851	data/SPAD_Electronics/0_HZ/3/direction_2/photo67.png	static	0_HZ	static_train	LED	3	2		67	False	0	False		75c8d7b6b464222381d31a71874af18f
 spad015576	data/SPAD_Electronics/0_HZ/3/direction_3/photo152.png	static	0_HZ	static_train	LED	3	3		152	False	0	False		acf7cde8a2be3efe9bab951c6e73d8af
@@ -22,7 +21,6 @@ spad014825	data/SPAD_Electronics/0_HZ/4/direction_3/photo201.png	static	0_HZ	sta
 spad039222	data/SPAD_Electronics/0_HZ/5/direction_1/photo0.png	static	0_HZ	static_train	tactile_switch	5	1		0	False	0	False		926cd8dac46cee3627053c7bb34816fb
 spad012378	data/SPAD_Electronics/0_HZ/5/direction_1/photo56.png	static	0_HZ	static_train	tactile_switch	5	1		56	False	0	False		5683f55ef0756b8f5d2eea87ef24b374
 spad007311	data/SPAD_Electronics/0_HZ/5/direction_2/photo141.png	static	0_HZ	static_train	tactile_switch	5	2		141	False	0	False		658190516dbb7ab02fa6ad7f802dc8f0
-spad045101	data/SPAD_Electronics/0_HZ/5/direction_2/photo56.png	static	0_HZ	static_train	tactile_switch	5	2		56	True	409600	True	c115ed27b8e2e82d7a736d0e117d4b58	c115ed27b8e2e82d7a736d0e117d4b58
 spad029212	data/SPAD_Electronics/0_HZ/5/direction_3/photo141.png	static	0_HZ	static_train	tactile_switch	5	3		141	False	0	False		414124025a6f9b5eb12c320ab1a16b72
 spad011142	data/SPAD_Electronics/0_HZ/6/direction_1/photo0.png	static	0_HZ	static_train	oscillator	6	1		0	False	0	False		0bc1aa664d251eaf978ffe98e87ae5fa
 spad019142	data/SPAD_Electronics/0_HZ/6/direction_1/photo198.png	static	0_HZ	static_train	oscillator	6	1		198	False	0	False		2a0e784faaa5b4ce624490278609703f
@@ -59,7 +57,6 @@ spad009404	data/SPAD_Electronics/0_HZ/12/direction_1/photo52.png	static	0_HZ	sta
 spad013321	data/SPAD_Electronics/0_HZ/12/direction_2/photo12.png	static	0_HZ	static_train	straight_male_header	12	2		12	False	0	False		b84331796d9ea99aa0f209970a1c908f
 spad001242	data/SPAD_Electronics/0_HZ/12/direction_2/photo74.png	static	0_HZ	static_train	straight_male_header	12	2		74	False	0	False		e8263ed732a1ea91edebde4f8a41917e
 spad018290	data/SPAD_Electronics/0_HZ/12/direction_3/photo27.png	static	0_HZ	static_train	straight_male_header	12	3		27	False	0	False		56a848818b11ee6143d52a5f24dad2f0
-spad028648	data/SPAD_Electronics/0_HZ/13/direction_1/photo0.png	static	0_HZ	static_train	vibration_switch	13	1		0	True	166400	False		78e56528813f6a4d8fa0acc40e5e2c01
 spad002405	data/SPAD_Electronics/0_HZ/13/direction_1/photo204.png	static	0_HZ	static_train	vibration_switch	13	1		204	False	0	False		a393ed7a6439a384cc0bfd759c7d6815
 spad000676	data/SPAD_Electronics/0_HZ/13/direction_2/photo115.png	static	0_HZ	static_train	vibration_switch	13	2		115	False	0	False		c20038281502811154703fc4ef81f70d
 spad028856	data/SPAD_Electronics/0_HZ/13/direction_2/photo73.png	static	0_HZ	static_train	vibration_switch	13	2		73	False	0	False		f3caf059f1cb36423e4e851aa8b0560a

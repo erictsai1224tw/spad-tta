@@ -34,7 +34,6 @@ spad007434	data/SPAD_Electronics/0_HZ/7/direction_4/photo129.png	static	0_HZ	sta
 spad013559	data/SPAD_Electronics/0_HZ/7/direction_4/photo16.png	static	0_HZ	static_validation	4pin_right_angle_male	7	4		16	False	0	False		9f9d28dfc5d4920a781d033b03d8656d
 spad036370	data/SPAD_Electronics/0_HZ/7/direction_4/photo38.png	static	0_HZ	static_validation	4pin_right_angle_male	7	4		38	False	0	False		30f51c6902423d9945b9a14d5f16b27b
 spad039934	data/SPAD_Electronics/0_HZ/7/direction_4/photo69.png	static	0_HZ	static_validation	4pin_right_angle_male	7	4		69	False	0	False		c72eaed93292c050d00e7300fec62a7d
-spad004670	data/SPAD_Electronics/0_HZ/8/direction_4/photo0.png	static	0_HZ	static_validation	5pin_female_housing	8	4		0	True	268800	False		e5ae6e567de9de857cce90333d76cafa
 spad012035	data/SPAD_Electronics/0_HZ/8/direction_4/photo120.png	static	0_HZ	static_validation	5pin_female_housing	8	4		120	False	0	False		71094a6526c37f14440fe57a3071b89f
 spad023320	data/SPAD_Electronics/0_HZ/8/direction_4/photo29.png	static	0_HZ	static_validation	5pin_female_housing	8	4		29	False	0	False		a93fcbfbb90714ff79d98753bbb70711
 spad039099	data/SPAD_Electronics/0_HZ/8/direction_4/photo51.png	static	0_HZ	static_validation	5pin_female_housing	8	4		51	False	0	False		5bfbfda115efb22ff052da07c19a66df
@@ -57,7 +56,6 @@ spad006325	data/SPAD_Electronics/0_HZ/11/direction_4/photo74.png	static	0_HZ	sta
 spad018292	data/SPAD_Electronics/0_HZ/12/direction_4/photo0.png	static	0_HZ	static_validation	straight_male_header	12	4		0	False	0	False		8d6af664ec027a9b1f7fb1d672d3a2f6
 spad042463	data/SPAD_Electronics/0_HZ/12/direction_4/photo125.png	static	0_HZ	static_validation	straight_male_header	12	4		125	False	0	False		bbe6dd37c70471389b9731b14a438793
 spad010636	data/SPAD_Electronics/0_HZ/12/direction_4/photo152.png	static	0_HZ	static_validation	straight_male_header	12	4		152	False	0	False		950d61f06193cd02fd5a22766e7dc0ca
-spad017159	data/SPAD_Electronics/0_HZ/12/direction_4/photo42.png	static	0_HZ	static_validation	straight_male_header	12	4		42	True	384000	False		5e2eb7bd410a9f7b21ba1a95bcc0cf74
 spad028078	data/SPAD_Electronics/0_HZ/12/direction_4/photo7.png	static	0_HZ	static_validation	straight_male_header	12	4		7	False	0	False		93d960bb15540b9008d2078a5ababdc5
 spad001720	data/SPAD_Electronics/0_HZ/13/direction_4/photo0.png	static	0_HZ	static_validation	vibration_switch	13	4		0	False	0	False		bc5ae33b7f4c0895208a31c7b6529665
 spad004062	data/SPAD_Electronics/0_HZ/13/direction_4/photo120.png	static	0_HZ	static_validation	vibration_switch	13	4		120	False	0	False		7582426a30c839750ae5203f49921d1c

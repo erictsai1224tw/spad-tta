@@ -11,7 +11,6 @@ spad012919	data/SPAD_Electronics/100_HZ/1/photo1334.png	dynamic	100_HZ	dynamic_t
 spad019874	data/SPAD_Electronics/100_HZ/1/photo1361.png	dynamic	100_HZ	dynamic_test	inductor	1		9	1361	False	0	False		c8ffb219a9a3057232056cc8d4725d4a
 spad003356	data/SPAD_Electronics/100_HZ/2/photo1024.png	dynamic	100_HZ	dynamic_test	resistor	2		8	1024	False	0	False		221980ea8d18a9e80ffa3b01e91bac48
 spad011953	data/SPAD_Electronics/100_HZ/2/photo1049.png	dynamic	100_HZ	dynamic_test	resistor	2		8	1049	False	0	False		e8c6553cf5d5ed644ba005f22ec70e15
-spad007171	data/SPAD_Electronics/100_HZ/2/photo1074.png	dynamic	100_HZ	dynamic_test	resistor	2		8	1074	True	25600	False		c54130cf65169309d346c7d2854f0482
 spad044581	data/SPAD_Electronics/100_HZ/2/photo1099.png	dynamic	100_HZ	dynamic_test	resistor	2		8	1099	False	0	False		d284c37879e30b5a33ba2ef5d2c7e421
 spad006694	data/SPAD_Electronics/100_HZ/2/photo1124.png	dynamic	100_HZ	dynamic_test	resistor	2		8	1124	False	0	False		894fef6c59dcfb42daeead57d763ac1e
 spad039922	data/SPAD_Electronics/100_HZ/2/photo1149.png	dynamic	100_HZ	dynamic_test	resistor	2		8	1149	False	0	False		fc7dbd9d497e92076c37df6261ec690f
@@ -78,14 +77,12 @@ spad011680	data/SPAD_Electronics/100_HZ/8/photo999.png	dynamic	100_HZ	dynamic_te
 spad021995	data/SPAD_Electronics/100_HZ/8/photo1112.png	dynamic	100_HZ	dynamic_test	5pin_female_housing	8		9	1112	False	0	False		1a2b9b8b986b2f5f89e2640af8fe8c78
 spad016126	data/SPAD_Electronics/100_HZ/8/photo1136.png	dynamic	100_HZ	dynamic_test	5pin_female_housing	8		9	1136	False	0	False		d6f3f8c93a94fc00f11dc791d22a51c9
 spad014350	data/SPAD_Electronics/100_HZ/8/photo1160.png	dynamic	100_HZ	dynamic_test	5pin_female_housing	8		9	1160	False	0	False		118740250db3cd8dd7a3492d43481c5f
-spad034359	data/SPAD_Electronics/100_HZ/8/photo1184.png	dynamic	100_HZ	dynamic_test	5pin_female_housing	8		9	1184	True	153600	False		25bed728c834f56f5542a75789c5a105
 spad014872	data/SPAD_Electronics/100_HZ/9/photo1035.png	dynamic	100_HZ	dynamic_test	USB_TypeC_receptacle	9		8	1035	False	0	False		2fbf0248c342bd9371c41d2b0461f087
 spad012947	data/SPAD_Electronics/100_HZ/9/photo1060.png	dynamic	100_HZ	dynamic_test	USB_TypeC_receptacle	9		8	1060	False	0	False		3f4d7f76efc7eb7b59fd3a579e54da09
 spad003182	data/SPAD_Electronics/100_HZ/9/photo1085.png	dynamic	100_HZ	dynamic_test	USB_TypeC_receptacle	9		8	1085	False	0	False		e0d814cd88c39a0bd1cc6e560fe49142
 spad028911	data/SPAD_Electronics/100_HZ/9/photo1110.png	dynamic	100_HZ	dynamic_test	USB_TypeC_receptacle	9		8	1110	False	0	False		a0f2720ca8c9fdd726db6df1caa96daf
 spad011896	data/SPAD_Electronics/100_HZ/9/photo1135.png	dynamic	100_HZ	dynamic_test	USB_TypeC_receptacle	9		8	1135	False	0	False		ac271d9fe784860d297bb9ff566344b4
 spad029419	data/SPAD_Electronics/100_HZ/9/photo1160.png	dynamic	100_HZ	dynamic_test	USB_TypeC_receptacle	9		8	1160	False	0	False		8e19581a60ddf26c0015ef7c6e3e3348
-spad013984	data/SPAD_Electronics/100_HZ/9/photo1185.png	dynamic	100_HZ	dynamic_test	USB_TypeC_receptacle	9		9	1185	True	371200	False		eee6afc9ac3f1d8bc48bc480145a0c04
 spad038451	data/SPAD_Electronics/100_HZ/9/photo1210.png	dynamic	100_HZ	dynamic_test	USB_TypeC_receptacle	9		9	1210	False	0	False		84aaed0e2594a85d1e06cd8d6f339b60
 spad011764	data/SPAD_Electronics/100_HZ/9/photo1235.png	dynamic	100_HZ	dynamic_test	USB_TypeC_receptacle	9		9	1235	False	0	False		949ec2c9d5888246e4593bd423f18094
 spad020064	data/SPAD_Electronics/100_HZ/9/photo1260.png	dynamic	100_HZ	dynamic_test	USB_TypeC_receptacle	9		9	1260	False	0	False		5af0cf91a8a3e841b28563d509ececcd
@@ -142,7 +139,6 @@ spad010539	data/SPAD_Electronics/100_HZ/14/photo1176.png	dynamic	100_HZ	dynamic_
 spad027348	data/SPAD_Electronics/100_HZ/15/photo5180.png	dynamic	100_HZ	dynamic_test	electrolytic_capacitor	15		8	5180	False	0	False		928d19f7abb6b1b336b95393cf27b030
 spad011465	data/SPAD_Electronics/100_HZ/15/photo5309.png	dynamic	100_HZ	dynamic_test	electrolytic_capacitor	15		8	5309	False	0	False		3b69b0a79cb9fe24f047d2e27a5b7003
 spad028624	data/SPAD_Electronics/100_HZ/15/photo5438.png	dynamic	100_HZ	dynamic_test	electrolytic_capacitor	15		8	5438	False	0	False		d75168ab45ec0bef1537c656fd15290a
-spad013193	data/SPAD_Electronics/100_HZ/15/photo5567.png	dynamic	100_HZ	dynamic_test	electrolytic_capacitor	15		8	5567	True	12800	False		158d1de8fe3f9b3937385f224f6c0956
 spad036551	data/SPAD_Electronics/100_HZ/15/photo5696.png	dynamic	100_HZ	dynamic_test	electrolytic_capacitor	15		8	5696	False	0	False		9be0ca78cb07f357f453bb120508a616
 spad008603	data/SPAD_Electronics/100_HZ/15/photo5825.png	dynamic	100_HZ	dynamic_test	electrolytic_capacitor	15		8	5825	False	0	False		84d09e455f933e8cc938e3d7c2c47302
 spad000309	data/SPAD_Electronics/100_HZ/15/photo5954.png	dynamic	100_HZ	dynamic_test	electrolytic_capacitor	15		9	5954	False	0	False		68e9edeeed6546f1b662b5f74da352fe
@@ -185,7 +181,6 @@ spad002408	data/SPAD_Electronics/100_HZ/19/photo1048.png	dynamic	100_HZ	dynamic_
 spad020661	data/SPAD_Electronics/100_HZ/19/photo1072.png	dynamic	100_HZ	dynamic_test	photodiode	19		8	1072	False	0	False		89d7a14f672819cc8bbb845980ff1708
 spad015931	data/SPAD_Electronics/100_HZ/19/photo1096.png	dynamic	100_HZ	dynamic_test	photodiode	19		8	1096	False	0	False		9f8ea8accd1c7936fc0b090d51facf1c
 spad011364	data/SPAD_Electronics/100_HZ/19/photo998.png	dynamic	100_HZ	dynamic_test	photodiode	19		8	998	False	0	False		a507b53bc90b533e05afe35e652a865b
-spad018477	data/SPAD_Electronics/100_HZ/19/photo1127.png	dynamic	100_HZ	dynamic_test	photodiode	19		9	1127	True	396800	False		6e080a066cc06661e262e38c926af3a7
 spad030771	data/SPAD_Electronics/100_HZ/19/photo1151.png	dynamic	100_HZ	dynamic_test	photodiode	19		9	1151	False	0	False		7b095cb147a861a44e052cb97e96589a
 spad034156	data/SPAD_Electronics/100_HZ/19/photo1175.png	dynamic	100_HZ	dynamic_test	photodiode	19		9	1175	False	0	False		635a0597d83fbbaf92325b1f3214db2b
 spad029892	data/SPAD_Electronics/100_HZ/19/photo1199.png	dynamic	100_HZ	dynamic_test	photodiode	19		9	1199	False	0	False		832b7fdcd29424cb43fb2abadac45ff5
