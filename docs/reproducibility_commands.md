@@ -14,8 +14,11 @@ guaranteed to reproduce exactly (see §6, the determinism caveat).
 ## 2. Source-only training + evaluation
 
 ```bash
-# --smoke: 64 samples, 2 epochs, 2 steps/epoch — runs against the sample data in this repo
-python -m src.tasks.icassp2027.train_source --config configs/source_only_resnet50.yaml --seed 0 --smoke
+# --smoke: 64 samples, 2 epochs, 2 steps/epoch — runs against the sample data in this repo.
+# --out places the checkpoint at the path the evaluate/adaptation commands below read from
+# (without it, --smoke writes to experiments/source_only/_smoke/seed0/).
+python -m src.tasks.icassp2027.train_source --config configs/source_only_resnet50.yaml --seed 0 --smoke \
+    --out experiments/source_only/seed0
 
 # Full-scale (needs the full dataset, not the sample shipped here):
 for SEED in 0 1 2; do
@@ -41,9 +44,10 @@ its training pool by walking every file in `data/SPAD_Electronics/100_HZ/<class>
 
 ```bash
 python -m src.tasks.icassp2027.train_lodo_direction --config configs/lodo_direction/leave_out_1.yaml --smoke --no-wandb
-# -> experiments/lodo_direction/leave_out_1/{final_model.pt,config.yaml,train_log.jsonl,train_metrics.json,env.json,checkpoint.sha256}
+# -> experiments/lodo_direction/_smoke/leave_out_1/{final_model.pt,config.yaml,train_log.jsonl,train_metrics.json,env.json,checkpoint.sha256}
+#    (a full run without --smoke writes to experiments/lodo_direction/leave_out_1/ instead)
 
-python -m src.tasks.icassp2027.evaluate_lodo_direction --run experiments/lodo_direction/leave_out_1 --limit 32 --no-wandb
+python -m src.tasks.icassp2027.evaluate_lodo_direction --run experiments/lodo_direction/_smoke/leave_out_1 --limit 32 --no-wandb
 ```
 
 Repeat for `leave_out_{2,3,4,5}.yaml` for the other four folds.
