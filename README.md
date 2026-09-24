@@ -1,7 +1,6 @@
 # SPAD-TTA
 
-Repository for **"PG-STAR: Purity-Gated Test-Time Adaption with Dynamic SPAD
-Classification for Machine Vision"** (submitted to ICASSP 2027).
+Repository for **"PG-STAR: PURITY-GATED TEST-TIME ADAPTATION FOR DYNAMIC SPAD CLASSIFICATION IN MACHINE VISION"**.
 
 ![Static vs. dynamic SPAD acquisition and the resulting benchmark](docs/figures/fig1_wide.png)
 ![PG-STAR architecture: a purity gate decides, per batch, whether LAME's output correction is applied on top of a RoTTA adaptation backbone](docs/figures/fig2_pg_star_arch.png)
